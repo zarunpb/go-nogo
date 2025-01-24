@@ -19,6 +19,8 @@ const rightImage = document.getElementById("rightImage");
 const currentResult = document.getElementById("currentResult");
 const resultsBody = document.getElementById("resultsBody");
 const resultsContainer = document.getElementById("resultsContainer");
+const leftButton = document.getElementById("leftButton");
+const rightButton = document.getElementById("rightButton");
 
 // Utility Functions
 function getRandomStimulus() {
@@ -45,14 +47,13 @@ function showStimulus() {
     }
 
     startTime = Date.now();
-    currentResult.textContent = ""; // Clear previous result
+    currentResult.textContent = "";
     trialActive = true;
 }
 
-function checkResponse(event) {
+function checkResponse(responseKey) {
     if (!trialActive || !currentTrial) return;
 
-    const responseKey = event.code;
     const reactionTime = Date.now() - startTime;
     const isCorrect = responseKey === currentTrial.correctKey;
     const correctnessText = isCorrect ? "Correct" : "Wrong";
@@ -71,31 +72,17 @@ function checkResponse(event) {
         <td>${reactionTime}</td>
     `;
 
-    resultsContainer.scrollTop = resultsContainer.scrollHeight;
-
     trialActive = false;
     setTimeout(showStimulus, 1000);
 }
 
-// Event Handlers
-document.addEventListener("keydown", (event) => {
-    if (trialActive && (event.code === "ShiftLeft" || event.code === "ShiftRight")) {
-        checkResponse(event);
-    }
-});
+// Event Listeners
+document.addEventListener("keydown", (event) => checkResponse(event.code));
+leftButton.addEventListener("click", () => checkResponse("ShiftLeft"));
+rightButton.addEventListener("click", () => checkResponse("ShiftRight"));
 
 playButton.addEventListener("click", () => {
     playerName = nameInput.value.trim();
-    if (!playerName) {
-        alert("Please enter your name.");
-        return;
-    }
-
-    playButton.style.display = "none";
-    nameInput.disabled = true;
-    
-    // Show the timestamp ONCE below the start button
     timestampDisplay.textContent = `Start Time: ${getCurrentTimestamp()}`;
-
     showStimulus();
 });

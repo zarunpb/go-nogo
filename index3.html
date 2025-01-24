@@ -89,6 +89,34 @@
             color: #333;
         }
 
+        /* Mobile/Tablet Button Container */
+        #button-container {
+            position: absolute;
+            top: calc(50% + 220px);
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+        }
+
+        .control-button {
+            padding: 15px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 40%;
+        }
+
+        .left-button {
+            background-color: #ff6347;
+            color: white;
+        }
+
+        .right-button {
+            background-color: #4682b4;
+            color: white;
+        }
+
         /* Fix results table at the bottom with a scrollable area */
         #resultsContainer {
             position: fixed;
@@ -131,6 +159,12 @@
     </div>
 
     <div id="currentResult"></div> <!-- Result Display Below Background -->
+
+    <!-- Mobile Button Controls -->
+    <div id="button-container">
+        <button id="leftButton" class="control-button left-button">Left</button>
+        <button id="rightButton" class="control-button right-button">Right</button>
+    </div>
 
     <div id="resultsContainer">
         <table id="resultsTable">
