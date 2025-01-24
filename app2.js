@@ -18,7 +18,6 @@ const leftImage = document.getElementById("leftImage");
 const rightImage = document.getElementById("rightImage");
 const currentResult = document.getElementById("currentResult");
 const resultsBody = document.getElementById("resultsBody");
-const resultsContainer = document.getElementById("resultsContainer");
 const leftButton = document.getElementById("leftButton");
 const rightButton = document.getElementById("rightButton");
 
@@ -77,7 +76,11 @@ function checkResponse(responseKey) {
 }
 
 // Event Listeners
-document.addEventListener("keydown", (event) => checkResponse(event.code));
+document.addEventListener("keydown", (event) => {
+    if (event.code === "ShiftLeft" || event.code === "ShiftRight") {
+        checkResponse(event.code);
+    }
+});
 leftButton.addEventListener("click", () => checkResponse("ShiftLeft"));
 rightButton.addEventListener("click", () => checkResponse("ShiftRight"));
 

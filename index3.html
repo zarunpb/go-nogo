@@ -83,24 +83,24 @@
         /* Display result text just below bg.png */
         #currentResult {
             position: absolute;
-            top: calc(50% + 180px); /* Moves it below the background container */
+            top: calc(50% + 180px);
             font-size: 18px;
             font-weight: bold;
             color: #333;
         }
 
-        /* Mobile/Tablet Button Container */
+        /* Mobile/Tablet Button Container - Moved wider apart */
         #button-container {
             position: absolute;
-            top: calc(50% + 220px);
+            top: calc(50% + 250px);
+            width: 80%;
             display: flex;
             justify-content: space-between;
-            width: 50%;
         }
 
         .control-button {
-            padding: 15px 40px;
-            font-size: 20px;
+            padding: 20px 50px;
+            font-size: 22px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -160,7 +160,7 @@
 
     <div id="currentResult"></div> <!-- Result Display Below Background -->
 
-    <!-- Mobile Button Controls -->
+    <!-- Mobile Button Controls - Moved further apart -->
     <div id="button-container">
         <button id="leftButton" class="control-button left-button">Left</button>
         <button id="rightButton" class="control-button right-button">Right</button>
